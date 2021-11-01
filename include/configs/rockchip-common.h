@@ -41,11 +41,11 @@
 	BOOT_TARGET_DEVICES_references_RKNAND_without_CONFIG_CMD_RKNAND
 #endif
 
-/* First try to boot from SD (index 1), then eMMC (index 0) */
+/* First try to boot from eMMC (index 0), then SD (index 1) */
 #if CONFIG_IS_ENABLED(CMD_MMC)
 	#define BOOT_TARGET_MMC(func) \
-		func(MMC, mmc, 1) \
-		func(MMC, mmc, 0)
+		func(MMC, mmc, 0) \
+		func(MMC, mmc, 1)
 #else
 	#define BOOT_TARGET_MMC(func)
 #endif
@@ -120,10 +120,10 @@
 #else
 #define RKIMG_DET_BOOTDEV \
 	"rkimg_bootdev=" \
-	"if mmc dev 1 && rkimgtest mmc 1; then " \
+	"if mmc dev 0; then " \
+		"setenv devtype mmc; setenv devnum 0;  echo Boot from eMMC;" \
+	"elif mmc dev 1 && rkimgtest mmc 1; then " \
 		"setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
-	"elif mmc dev 0; then " \
-		"setenv devtype mmc; setenv devnum 0;" \
 	"elif mtd_blk dev 0; then " \
 		"setenv devtype mtd; setenv devnum 0;" \
 	"elif mtd_blk dev 1; then " \
