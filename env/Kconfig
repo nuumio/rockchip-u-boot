@@ -485,6 +485,13 @@ config ENV_SIZE
 	help
 	  Size of the environment storage area
 
+config ENV_SECT_SIZE
+	hex "Environment Sector-Size"
+	depends on ENV_IS_IN_FLASH || ENV_IS_IN_SPI_FLASH
+	default 0x2000
+	help
+	  Size of the sector containing the environment.
+
 endif
 
 endmenu
