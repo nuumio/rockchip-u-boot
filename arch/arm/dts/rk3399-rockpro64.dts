@@ -473,23 +473,23 @@
 	status = "okay";
 };
 
-&dwc3_typec0 {
+&usbdrd_dwc3_0 {
 	vbus-supply = <&vcc5v0_host>;
 	status = "okay";
 	maximum-speed = "high-speed";
 };
 
-&dwc3_typec1 {
+&usbdrd_dwc3_1 {
 	vbus-supply = <&vcc5v0_host>;
 	status = "okay";
 	maximum-speed = "high-speed";
 };
 
-&typec_phy0 {
+&tcphy0 {
 	status = "okay";
 };
 
-&typec_phy1 {
+&tcphy1 {
 	status = "okay";
 };
 
@@ -758,12 +758,12 @@
 
 		sdmmc_clk: sdmmc-clk {
 			rockchip,pins =
-				<4 RK_PB4 RK_FUNC_1 &pcfg_pull_none_18ma>;
+				<4 RK_PB4 RK_FUNC_1 &pcfg_pull_none>;
 		};
 
 		sdmmc_cmd: sdmmc-cmd {
 			rockchip,pins =
-				<4 RK_PB5 RK_FUNC_1 &pcfg_pull_up_8ma>;
+				<4 RK_PB5 RK_FUNC_1 &pcfg_pull_up>;
 		};
 		
 		sdmmc0_pwr_h: sdmmc0-pwr-h {
